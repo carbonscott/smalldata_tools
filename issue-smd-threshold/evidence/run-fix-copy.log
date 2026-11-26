@@ -1,0 +1,38 @@
+# host: sdfrome039
+# date: 2026-11-26T07:44:53Z
+# commit: smalldata_tools 4ac7386d2063f46c6131e5efddd6f632850720f7 (sdt-fix-thres fix-thres) recording-lcls2 5eb773c84b9d8bf804c87fb6d629646cf5631cd4
+# cmd: run_x6.sh r1 /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/runs2/fix-thres  --ranks 4 --all_events --config x6sim
+# run: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/rec/r1
+# x6 scripts sha256: calibws_jf.py:42605d659412 x6_check.py:96fceb2b69a8 run_x6.sh:42290877facc prod_config_x6sim.py:039c7629369d shim/sitecustomize.py:194acdc0befd 
+# psana env: /sdf/group/lcls/ds/ana/sw/conda2/manage/bin/psconda.sh -> /sdf/group/lcls/ds/ana/sw/conda2/rel/ana/lcls2_111826/setup_env_ana.sh
+# network: lo (namespace net:[4026534367])
+xtc2 files: 1 bigdata, 1 smalldata; seed 0x1234
+calibws_jf: ready on 127.0.0.1:31877: jungfrau_000001 pedestal 1031.5 gain 40.0 fault None
+smd_producer: exit 0 in 30 s with 4 MPI ranks; log /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/runs2/fix-thres/producer.log
+/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/sdt-fix-thres/lcls2_producers/smd_producer.py:1081: DeprecationWarning: There is no current event loop
+  loop = asyncio.get_event_loop()
+########## JOB TIME: 0.408326 minutes ###########
+Last Event: 3542
+[0m[0m[0m[0m[1795679125.717752] [sdfrome039:1579836:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x56211eabdb00 was not matched
+stand-in requests: 9 (8 answered 200; logbook file-list requests 1)
+h5: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/runs2/fix-thres/h5/mfxsim0001_Run0001.h5 (51409660 bytes)
+h5: 3543 rows; Sums images: jungfrau_calib, jungfrau_calib_max, jungfrau_calib_square, jungfrau_calib_thresADU1, jungfrau_calib_thresADU5; ROI datasets: jungfrau/ROI_ring_sum, jungfrau/ROI_ring_max, jungfrau/ROI_dark_sum, jungfrau/ROI_dark_max
+xtc2: 3543 jungfrau events, frame_cnt 1..3543
+CHECK rows                   PASS  h5 3543 rows, xtc2 3543 events; missing 0, extra 0, duplicate 0; rows in time order: True
+CHECK input                  PASS  3543 of 3543 recorded frames equal the model frame
+CHECK img_calib              PASS  0 of 524288 pixels off (worst |h5 - truth| 1.756 at pixel 330067: h5 440064, truth 440066)
+CHECK img_calib_max          PASS  0 of 524288 pixels off (worst |h5 - truth| 1.831e-05 at pixel 58879: h5 256.113, truth 256.113)
+CHECK img_calib_square       PASS  0 of 524288 pixels off (worst |h5 - truth| 658.4 at pixel 181604: h5 9.31731e+07, truth 9.31724e+07)
+CHECK img_calib_thresADU1    PASS  0 of 524288 pixels off (worst |h5 - truth| 1.75 at pixel 330067: h5 440067, truth 440069)
+CHECK img_calib_thresADU5    PASS  0 of 524288 pixels off (worst |h5 - truth| 1.75 at pixel 330067: h5 440067, truth 440069)
+CHECK roi_ring_sum           PASS  0 of 3543 events off (worst |h5 - truth| 0.0125)
+CHECK roi_ring_max           PASS  0 of 3543 events off (worst |h5 - truth| 1.83e-05)
+CHECK roi_dark_sum           PASS  0 of 3543 events off (worst |h5 - truth| 1.91e-06)
+CHECK roi_dark_max           PASS  0 of 3543 events off (worst |h5 - truth| 2.38e-08)
+CHECK ratio                  FAIL  T=1 n=837 ratio=1.0000 dev=+0.00%; T=0.5 n=807 ratio=0.5195 dev=+3.90%; T=0.25 n=805 ratio=0.2601 dev=+4.02%; T=0.1 n=805 ratio=0.1038 dev=+3.75%
+CHECK dark                   PASS  289 events after the record's stopper IN; worst |ring ROI mean calib| 0.0607
+CHECK pedestal               PASS  dark ROI mean calib over the run -0.0000 (tolerance 0.02)
+SUMMARY 14 checks, 13 PASS, 1 FAIL (failing: ratio)
+[1795679128.556845] [sdfrome039:1580567:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+exit 1
+srun: error: sdfrome039: task 0: Exited with exit code 1

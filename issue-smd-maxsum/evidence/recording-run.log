@@ -1,0 +1,60 @@
+# host: sdfrome044
+# date: 2026-11-26T07:36:25Z
+# commit: lcls2 6f0a24daebc2ef9da599b204886b43163f9e3d77 (Merge pull request #73 from carbonscott/sync/upstream-2026-11-23) daqrun.sh 0355c60f555a
+# cmd: EVENTS=2000 daqrun.sh record /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h3/runs/jf-rec1 /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h3/lcls2
+# slurm: job 47203689 step 15 cpus 8; user cwang31
+2026-11-26T07:36:25Z netns net:[4026534368]; links up: lo ; lo: 172.24.33.109/32 127.0.0.1/8 ; /tmp: xfs
+tmpfs
+2026-11-26T07:36:30Z conda env: daq_20250402_r9; drp: /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h3/lcls2/install/bin/drp; daq_sim: /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h3/lcls2/install/bin/daq_sim
+2026-11-26T07:36:30Z $ daq_sim up -w /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h3/runs/jf-rec1/wd -p 0 --rate 120 --segments 1 --length 64 --det jungfrau --detach
+2026-11-26T07:37:07Z up exit 0; 2026-11-25T23:37:07.044-08:00 daq_sim: UP. Endpoints (also in endpoints.json):
+2026-11-26T07:37:07Z $ daq_sim status
+workdir /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h3/runs/jf-rec1/wd  host sdfrome044  platform 0  started 2026-11-25T23:36:31.752-08:0
+  configdb   pid 1169848  alive
+  lgbk       pid 1169879  alive
+  simxpm     pid 1169882  alive
+  simsls     pid 1169894  alive
+  control    pid 1169954  RUNNING
+  teb0       pid 1169955  RUNNING
+  jungfrau_0 pid 1169956  RUNNING
+  control    state reset  transition reset  config BEAM  recording False  experiment tstx00001  run 0  last run 0
+  simxpm     PART:0:NumL0Acc = Wed Nov 25 23:37:08 2026 0.0
+  simxpm     PART:0:NumL0Inp = Wed Nov 25 23:37:08 2026 0.0
+2026-11-26T07:37:09Z $ daq_sim cycle -w /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h3/runs/jf-rec1/wd --events 2000
+2026-11-25T23:37:11.775-08:00 setState unallocated  -> unallocated  OK
+2026-11-25T23:37:11.986-08:00 setState allocated    -> allocated    OK
+2026-11-25T23:37:12.537-08:00 setState connected    -> connected    OK
+2026-11-25T23:37:14.796-08:00 setState configured   -> configured   OK
+2026-11-25T23:37:15.950-08:00 setState starting     -> starting     OK
+2026-11-25T23:37:15.953-08:00 setState paused       -> paused       OK
+2026-11-25T23:37:15.958-08:00 setState running      -> running      OK
+2026-11-25T23:37:33.313-08:00 DAQ:SIM:XPM:0:PART:0:NumL0Acc = 2013 (wanted >= 2000)
+2026-11-25T23:37:33.322-08:00 setState paused       -> paused       OK
+2026-11-25T23:37:34.482-08:00 counts after Disable: {'simxpm NumL0Acc': 2084, 'simxpm NumL0Inp': 2084, 'simxpm NumL0Acc group 0': 2084, 'simxpm links': {'jungfrau_0': {'group': 0, 'l1acc': 2084, 'link
+2026-11-25T23:37:34.486-08:00 setState starting     -> starting     OK
+2026-11-25T23:37:34.498-08:00 setState configured   -> configured   OK
+2026-11-25T23:37:34.703-08:00 setState connected    -> connected    OK
+2026-11-25T23:37:34.841-08:00 setState allocated    -> allocated    OK
+2026-11-25T23:37:34.892-08:00 setState unallocated  -> unallocated  OK
+2026-11-25T23:37:34.893-08:00 setState reset        -> reset        OK
+  simxpm NumL0Acc        2084
+  simxpm NumL0Inp        2084
+  simxpm NumL0Acc group 0 2084
+  drp_num_dma_errors     0
+  drp_num_th_error       0
+  xtc2 file              data/tst/tstx00001/xtc/tstx00001-r0001-s000-c000.xtc2 (2185483394 B)
+  psana2 events          2084
+  psana2 with data       2084
+  psana2 checks          PASS
+  psana2 seq             1..2084
+  psana2 seeds           {'0x1234': 2084}
+  equal (simxpm NumL0Acc == TEB_WrtCt == psana2 events) >= 2000: True
+2026-11-25T23:37:55.207-08:00 cycle PASS
+2026-11-26T07:37:55Z cycle exit 0
+2026-11-26T07:37:55Z $ daq_sim down
+2026-11-26T07:38:02Z down exit 0: 2026-11-25T23:38:02.745-08:00 daq_sim: down: clean
+2026-11-26T07:38:02Z recorded files:
+-r--r-----+ 1 root nobody     190586 Nov 25 23:37 data/tst/tstx00001/xtc/smalldata/tstx00001-r0001-s000-c000.smd.xtc2
+-r--r-----+ 1 root nobody 2185483394 Nov 25 23:37 data/tst/tstx00001/xtc/tstx00001-r0001-s000-c000.xtc2
+2026-11-26T07:38:02Z seed: 4660
+2026-11-26T07:38:02Z done

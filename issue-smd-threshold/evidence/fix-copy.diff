@@ -1,0 +1,20 @@
+# host: sdfiana025
+# date: 2026-11-26T07:46:48Z
+# commit: 4ac7386d2063f46c6131e5efddd6f632850720f7 on upstream smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd
+# cmd: fixdiff.sh sdt-fix-thres   (git show of the local fix commit; never pushed)
+local fix commit 4ac7386: processSums: sum a copy of the event data, so a threshold key does not change it for later keys
+
+ smalldata_tools/lcls2/DetObject.py | 2 +-
+diff --git a/smalldata_tools/lcls2/DetObject.py b/smalldata_tools/lcls2/DetObject.py
+index f24bf26..a979730 100644
+--- a/smalldata_tools/lcls2/DetObject.py
++++ b/smalldata_tools/lcls2/DetObject.py
+@@ -193,7 +193,7 @@ class DetObjectClass(object):
+ 
+             if self.evt.dat is None:
+                 return
+-            dat_to_be_summed = self.evt.dat
++            dat_to_be_summed = self.evt.dat.copy()
+             if thres > 1e-9:
+                 dat_to_be_summed[self.evt.dat < thres] = 0.0
+ 

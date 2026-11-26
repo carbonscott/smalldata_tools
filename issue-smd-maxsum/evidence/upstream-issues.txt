@@ -1,0 +1,27 @@
+# host: sdfiana025
+# date: 2026-11-26T07:38:47Z
+# commit: slac-lcls/smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd (default-branch head checked against)
+# cmd: ghcheck.py slac-lcls/smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd 221 (?i)max|reduc|MPI calib_max small_data.max 'max reduction' 'Sums max'
+
+== search 'repo:slac-lcls/smalldata_tools calib_max': 1 hit(s)
+  #221  closed PR    2024-12-19  ENH Use maximum for MPI reduction when requesting max projection for detector image sum
+
+== search 'repo:slac-lcls/smalldata_tools small_data.max': 1 hit(s)
+  #221  closed PR    2024-12-19  ENH Use maximum for MPI reduction when requesting max projection for detector image sum
+
+== search 'repo:slac-lcls/smalldata_tools max reduction': 3 hit(s)
+  #288  closed PR    2026-08-25  azimuthalBinning_gpu: GPU/CPU drop-in for azimuthalBinning
+  #240  closed PR    2025-05-06  Feature/lcls2 cube
+  #221  closed PR    2024-12-19  ENH Use maximum for MPI reduction when requesting max projection for detector image sum
+
+== search 'repo:slac-lcls/smalldata_tools Sums max': 4 hit(s)
+  #298  open   PR    2026-10-24  PERF SvdFit: make the per-shot score optional (4/4)
+  #294  open   issue 2026-10-24  ENH Smaller, faster smalldata in integrating-detector mode, as a series of small PRs
+  #295  closed PR    2026-10-24  BUG Integrating mode: add the first shot once, not twice (1/4)
+  #257  closed PR    2025-06-30  ENH LCLS2 Sum Algorithm Config
+
+== #221 PR closed, opened 2024-12-19T00:30:03Z, closed 2025-01-26T19:17:30Z: ENH Use maximum for MPI reduction when requesting max projection for detector image sum
+   https://github.com/slac-lcls/smalldata_tools/pull/221
+  [body]
+    This PR uses the `small_data.max` method to produce a true max projection when reducing across MPI ranks for the detector image sum. This is applied to sum algorithms `calib_max` and variants.
+    - [x] Use max projection

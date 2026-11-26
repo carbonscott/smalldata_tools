@@ -1,0 +1,91 @@
+# host: sdfiana025
+# date: 2026-11-26T07:44:30Z
+# commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd (slac-lcls/smalldata_tools master head)
+# cmd: collect_swallow.sh /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smd-swallow/evidence (whole copy of /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smd-swallow/runs/x6sim-asis/producer.log, unchanged below the blank line)
+
+[1795678985.709359] [sdfrome039:1577048:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795678985.709563] [sdfrome039:1577049:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795678985.712847] [sdfrome039:1577051:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795678985.712847] [sdfrome039:1577050:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[ 2026-11-25 23:43:07,718 | INFO | smd_producer.py] MPI size: 4
+[ 2026-11-25 23:43:07,718 | INFO | smd_producer.py] psana conda environment is psana_20260904
+[ 2026-11-25 23:43:07,718 | INFO | smd_producer.py] /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smalldata_tools
+[ 2026-11-25 23:43:12,986 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-25 23:43:13,054 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-25 23:43:13,085 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-25 23:43:13,085 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-25 23:43:16,458 | INFO | smd_producer.py] Producer cfg file: <prod_config_x6sim>.
+[ 2026-11-25 23:43:16,470 | INFO | smd_producer.py] Requested data be found at: /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smd-swallow/runs/x6sim-asis/xtc
+[ 2026-11-25 23:43:16,472 | INFO | smd_producer.py] Requested data be found at: /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smd-swallow/runs/x6sim-asis/xtc
+[ 2026-11-25 23:43:16,472 | INFO | smd_producer.py] Will write small data file to /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smd-swallow/runs/x6sim-asis/h5/mfxsim0001_Run0001.h5
+[ 2026-11-25 23:43:16,475 | INFO | smd_producer.py] Requested data be found at: /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smd-swallow/runs/x6sim-asis/xtc
+[ 2026-11-25 23:43:16,479 | INFO | smd_producer.py] Requested data be found at: /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smd-swallow/runs/x6sim-asis/xtc
+[PSANA-INFO RANK:0 1795678996.771787264] Communicators [MPI-role] layout: smd0=1 eb=1 bd=1 srv=1 (world=4)
+[PSANA-INFO RANK:0 1795678996.805867264] MPIDataSource Warning: unable to connect to http://127.0.0.1:31877/lgbk/mfxsim0001/ws/1/current_files_for_live_mode
+#### DATASOURCE AND PSANA ENV VAR INFO ####
+Instantiated data source with arguments: {'exp': 'mfxsim0001', 'run': 1, 'dir': '/sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smd-swallow/runs/x6sim-asis/xtc'}
+MPI size: 4
+PS_EB_NODES=1
+PS_SRV_NODES=1
+PS_SMD_N_EVENTS=1000
+DS batchsize: 1
+#### END DATASOURCE AND PSANA ENV VAR INFO ####
+
+[ 2026-11-25 23:43:16,824 | INFO | smd_producer.py] Unique user rank: 2
+[PSANA-INFO RANK:0 1795678997.301251584] RunParallel [MPI-role] rank=0 host=sdfrome039 numa_id=1 numa_size=2
+[ 2026-11-25 23:43:17,301 | INFO | smd_producer.py] Opening the h5file /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smd-swallow/runs/x6sim-asis/h5/mfxsim0001_Run0001.h5, gathering at 100
+could not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+[ 2026-11-25 23:43:17,301 | INFO | DetObject.py] Getting the detector for: jungfrau
+[ 2026-11-25 23:43:17,301 | INFO | DetObject.py] Getting the detector for: jungfrau
+could not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+[ 2026-11-25 23:43:17,308 | INFO | smd_producer.py] smalldata file has been successfully created.
+could not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+[ 2026-11-25 23:43:17,309 | INFO | smd_producer.py] Default detectors loaded:
+[ 2026-11-25 23:43:17,309 | INFO | smd_producer.py] damage: damage
+[ 2026-11-25 23:43:17,668 | INFO | smd_producer.py] Detectors: ['jungfrau']
+[ 2026-11-25 23:43:17,668 | INFO | smd_producer.py] Integrating detectors: []
+[ 2026-11-25 23:43:17,668 | INFO | smd_producer.py] And now the event loop user....
+[ 2026-11-25 23:43:17,686 | WARNING | UtilsJungfrau.py] calib_jungfrau_versions:
+    calib jungfrau with cversion=3 is intended to run fast C++ version and currently DOES NOT APPLY COMMON-MODE CORRECTION
+    to enable common mode correction, initialize calib(...) with cversion=0 and the desired cmpars, currently: (7, 0, 10)
+Processed evt 0
+Processed evt 1
+Processed evt 2
+Processed evt 3
+Processed evt 4
+Processed evt 5
+Processed evt 6
+Processed evt 7
+Processed evt 8
+Processed evt 9
+Processed evt 10
+Processed evt 20
+Processed evt 30
+Processed evt 40
+Processed evt 50
+Processed evt 60
+Processed evt 70
+Processed evt 80
+Processed evt 90
+Processed evt 100
+Processed evt 200
+Processed evt 300
+Processed evt 400
+Processed evt 500
+Processed evt 600
+Processed evt 700
+Processed evt 800
+Processed evt 900
+Processed evt 1000
+Processed evt 2000
+[ 2026-11-25 23:43:37,633 | INFO | smd_producer.py] Saving detector configuration to UserDataCfg
+Joining: 1 files --> mfxsim0001_Run0001.h5
+[ 2026-11-25 23:43:37,777 | INFO | smd_producer.py] Getting epics data from Archiver (rank: 2)
+/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h1/smalldata_tools/lcls2_producers/smd_producer.py:1081: DeprecationWarning: There is no current event loop
+  loop = asyncio.get_event_loop()
+########## JOB TIME: 0.504914 minutes ###########
+Last Event: 2083
+[0m[0m[0m[0m[1795679018.906308] [sdfrome039:1577048:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x5579590ff8c0 was not matched

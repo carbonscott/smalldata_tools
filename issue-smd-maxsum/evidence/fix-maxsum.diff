@@ -1,0 +1,18 @@
+diff --git a/lcls2_producers/smd_producer.py b/lcls2_producers/smd_producer.py
+index 9a43507..f299a46 100755
+--- a/lcls2_producers/smd_producer.py
++++ b/lcls2_producers/smd_producer.py
+@@ -1007,7 +1007,12 @@ if not ds.is_srv():
+     for det in dets:
+         for key in det.storeSum().keys():
+             try:
+-                sumData = small_data.sum(det.storeSum()[key])
++                # A per-pixel max is combined across ranks with MPI.MAX, not MPI.SUM
++                # (as lcls1_producers/smd_producer.py does)
++                if "max" in key:
++                    sumData = small_data.max(det.storeSum()[key])
++                else:
++                    sumData = small_data.sum(det.storeSum()[key])
+                 sumDict["Sums"]["%s_%s" % (det._name, key)] = sumData
+             except:
+                 print("Problem with data sum for %s and key %s" % (det._name, key))

@@ -1,0 +1,35 @@
+# host: sdfrome044
+# date: 2026-11-26T07:38:28Z
+# commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd (Merge pull request #302 from slac-lcls/mnt/py-313) recording lcls2 6f0a24daebc2
+# cmd: run_maxsum.sh /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h3/runs/jf-rec1/wd /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h3/runs/maxsum-4ranks 4 /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h3/smalldata_tools
+# scripts sha256: run_maxsum.sh:dac6d8675ad4 maxcheck.py:03c5b5ea1759 prod_config_maxsum.py:30b6e3c83507 calibws_jf.py:42605d659412 shim/sitecustomize.py:194acdc0befd 
+# psana env: /sdf/group/lcls/ds/ana/sw/conda2/rel/ana/lcls2_111826/setup_env_ana.sh
+# slurm: job 47203689 step 18 cpus 10
+2026-11-26T07:38:28Z network namespace net:[4026534464]; links up: lo 
+2026-11-26T07:38:28Z recording jf-rec1: 1 bigdata, 1 smalldata xtc2 file(s), presented as experiment mfxsim0001 run 1
+2026-11-26T07:38:37Z psana2 release: /sdf/group/lcls/ds/ana/sw/conda2/rel/ana/lcls2_111826/install/lib/python3.13/site-packages/psana
+[1795678713.420657] [sdfrome044:1172179:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+calibws_jf: ready on 127.0.0.1:31877: jungfrau_000001 pedestal 1031.5 gain 40.0 fault None
+2026-11-26T07:38:38Z the reduction this smalldata_tools runs at the end of the run (lcls2_producers/smd_producer.py):
+1006:    sumDict = {"Sums": {}}
+1007-    for det in dets:
+1008-        for key in det.storeSum().keys():
+1009-            try:
+1010-                sumData = small_data.sum(det.storeSum()[key])
+1011-                sumDict["Sums"]["%s_%s" % (det._name, key)] = sumData
+1012-            except:
+2026-11-26T07:38:38Z ranks: 4 MPI ranks = 1 smd0 + 1 event builder + 1 srv + 1 bigdata rank(s) that read events
+2026-11-26T07:38:38Z $ mpirun -n 4 python -m mpi4py.run smd_producer.py --experiment mfxsim0001 --run 1 --psdm_dir <out>/xtc --directory <out>/h5 --noarch --all_events --config maxsum
+2026-11-26T07:39:16Z smd_producer: exit 0 in 38 s; log maxsum-4ranks/producer.log (0 'Failed analyzing' lines)
+2026-11-26T07:39:16Z $ python maxcheck.py --h5 mfxsim0001_Run0001.h5 
+[PSANA-INFO RANK:0 1795678760.124648960] SerialDataSource Warning: unable to connect to http://127.0.0.1:31877/lgbk/mfxsim0001/ws/1/current_files_for_live_mode
+truth: 2084 events read by one psana2 process; per-pixel max of det.raw.calib, shape (1, 512, 1024)
+h5:    mfxsim0001_Run0001.h5  Sums/jungfrau_calib_max shape (1, 512, 1024), 2084 event rows
+global max: truth 227272.484  h5 227272.484  ratio h5/truth 1.000
+pixels 0 in the h5 but not in the truth (smalldata_tools' bad-pixel mask): 0
+pixels equal to the truth (rtol 1e-5), masked pixels counted as equal: 524288 of 524288
+per-pixel ratio h5/truth over 524272 pixels with truth > 0: min 1.000  median 1.000  max 1.000
+pixels where h5 exceeds the truth by > 1%: 0
+VERDICT: calib_max EQUALS the per-pixel max
+[1795678758.897320] [sdfrome044:1173270:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+2026-11-26T07:39:29Z maxcheck exit 0

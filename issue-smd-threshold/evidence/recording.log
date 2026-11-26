@@ -1,0 +1,33 @@
+# host: sdfrome039
+# date: 2026-11-26T07:39:48Z
+# commit: lcls2 5eb773c84b9d8bf804c87fb6d629646cf5631cd4 (sim/beam-coupling, github.com/carbonscott/lcls2)
+# cmd: record.sh /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/rec/r1 3400
+# slurm: job 47203681 step 20 cpus 16
+# scripts sha256: record.sh:e36873eb6be0 feed_beam.py:2918ce04b1ec 
+2026-11-26T07:39:48Z inside netns net:[4026534368] mnt mnt:[4026534367]; links: lo ; lo: 127.0.0.1/8 ; /tmp: xfs
+tmpfs
+2026-11-26T07:39:54Z up: daq_sim up -w /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/rec/r1/daq -p 0 --det jungfrau --rate 120 --seed 0x1234 (PSDAQ_SIM_SLS_BEAM=/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/rec/r1/beam.json)
+2026-11-26T07:40:33Z up after 39s
+2026-11-26T07:40:33Z cycle: daq_sim cycle -w /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/rec/r1/daq --events 3400; beam steps every 6.7s (feed_beam.py)
+2026-11-26T07:40:40Z DAQ running; starting the beam feed
+2026-11-26T07:41:59Z cycle exit 1
+2026-11-25T23:41:09.525-08:00 DAQ:SIM:XPM:0:PART:0:NumL0Acc = 3468 (wanted >= 3400)
+2026-11-25T23:41:10.689-08:00 counts after Disable: {'simxpm NumL0Acc': 3543, 'simxpm NumL0Inp': 3543, 'simxpm NumL0Acc group 0': 3543, 'simxpm links': {'jungfrau_0': {'group': 0, 'l1acc': 3543, 'link': 0}}, 'TEB_EvtCt': 3543, 'TEB_TrCt': 35, 'TEB_WrtCt': 3543, 'DRP_Damage': 0, 'DRP_RecordSize': 3715510672, 'drp_num_dma_errors': 0, 'drp_num_missing_rogs': 0, 'drp_num_th_error': 0, 'drp_num_pgp_jump': 0}
+  simxpm NumL0Acc        3543
+  simxpm NumL0Inp        3543
+  simxpm NumL0Acc group 0 3543
+  psana2 events          3543
+  psana2 with data       3543
+  psana2 checks          FAIL ['event 1: 524288 of 524288 pixels differ, first at (0, 0, 0): 0x48 != 0xb06b', 'event 2: 524288 of 524288 pixels differ, first at (0, 0, 0): 0x48 != 0x4ea2', 'event 3: 524288 of 524288 pixels differ, first at (0, 0, 0): 0x48 != 0xecd9']
+  psana2 seq             1..3543
+  psana2 seeds           {'0x1234': 0}
+  equal (simxpm NumL0Acc == TEB_WrtCt == psana2 events) >= 3400: False
+2026-11-25T23:41:59.367-08:00 cycle FAIL
+2026-11-26 07:40:40.260489 beam: transmission 1, open
+2026-11-26 07:40:46.971888 beam: transmission 0.5, open
+2026-11-26 07:40:53.696717 beam: transmission 0.25, open
+2026-11-26 07:41:00.405138 beam: transmission 0.1, open
+2026-11-26 07:41:07.114673 beam: transmission 0.1, closed
+2026-11-26T07:42:07Z down: 2026-11-25T23:42:07.876-08:00 daq_sim: down: clean
+2026-11-26T07:42:07Z xtc2: 301758 /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/rec/r1/daq/data/tst/tstx00001/xtc/smalldata/tstx00001-r0001-s000-c000.smd.xtc2;3715510720 /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/sim-issues/agents/h2/rec/r1/daq/data/tst/tstx00001/xtc/tstx00001-r0001-s000-c000.xtc2;
+2026-11-26T07:42:08Z seed: 0x1234

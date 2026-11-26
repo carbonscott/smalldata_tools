@@ -1,0 +1,49 @@
+# host: sdfiana025
+# date: 2026-11-26T07:38:59Z
+# commit: slac-lcls/smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd
+# cmd: excerpt.sh <lcls2 clone> 113800e157605e27b1a9794e1f6467a58a5b11cd <out> lcls2_producers/smd_producer.py:1005-1015 lcls1_producers/smd_producer.py:678-686 smalldata_tools/lcls2/DetObject.py:205-218
+
+== lcls2_producers/smd_producer.py lines 1005-1015 at 113800e15760
+ 1005  if not ds.is_srv():
+ 1006      sumDict = {"Sums": {}}
+ 1007      for det in dets:
+ 1008          for key in det.storeSum().keys():
+ 1009              try:
+ 1010                  sumData = small_data.sum(det.storeSum()[key])
+ 1011                  sumDict["Sums"]["%s_%s" % (det._name, key)] = sumData
+ 1012              except:
+ 1013                  print("Problem with data sum for %s and key %s" % (det._name, key))
+ 1014      if len(sumDict["Sums"].keys()) > 0 and small_data.summary:
+ 1015          small_data.save_summary(sumDict)
+
+== lcls1_producers/smd_producer.py lines 678-686 at 113800e15760
+  678  sumDict={'Sums': {}}
+  679  for det in dets:
+  680      for key in det.storeSum().keys():
+  681          if "max" in key:
+  682              sumData = small_data.max(det.storeSum()[key])
+  683          else:
+  684              sumData = small_data.sum(det.storeSum()[key])
+  685          sumDict['Sums']['%s_%s'%(det._name, key)]=sumData
+  686  if len(sumDict['Sums'].keys())>0:
+
+== smalldata_tools/lcls2/DetObject.py lines 205-218 at 113800e15760
+  205  
+  206              if self._storeSum[key] is None:
+  207                  if dat_to_be_summed is not None:
+  208                      self._storeSum[key] = dat_to_be_summed.copy()
+  209              else:
+  210                  try:
+  211                      if key.find("max") < 0:
+  212                          self._storeSum[key] += dat_to_be_summed
+  213                      else:
+  214                          # Care about nan behaviour?
+  215                          self._storeSum[key] = np.maximum(
+  216                              self._storeSum[key], dat_to_be_summed
+  217                          )
+  218                  except:
+
+== PR #221 (merged 2025-01-26): the files it changed (git show --stat of its merge parent range)
+merge commit: 002287c107f9f7c32457f3a18f6eb718a2a96b9a
+3c64490 2024-12-18 ENH Use maximum for MPI reduction when requesting max projection for image sum
+ lcls1_producers/smd_producer.py | 5 ++++-
