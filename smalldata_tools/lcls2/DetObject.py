@@ -184,21 +184,31 @@ class DetObjectClass(object):
             #     print(e)
 
     def processSums(self):
-        for key in self._storeSum.keys():
+        # Keys without a threshold first, then rising thresholds on one copy of the
+        # event data (zeroing below 1 then below 5 equals zeroing below 5), so every
+        # key sees its own definition and self.evt.dat stays untouched.
+        thresholds = {
+            key: float(skey.replace("thresADU", ""))
+            for key in self._storeSum
+            for skey in key.split("_")
+            if skey.find("thresADU") >= 0
+        }
+        work = None
+        for key in sorted(self._storeSum, key=lambda k: thresholds.get(k, -1.0e9)):
             asImg = False
-            thres = -1.0e9
-            for skey in key.split("_"):
-                if skey.find("thresADU") >= 0:
-                    thres = float(skey.replace("thresADU", ""))
+            thres = thresholds.get(key, -1.0e9)
 
             if self.evt.dat is None:
                 return
             dat_to_be_summed = self.evt.dat
             if thres > 1e-9:
-                dat_to_be_summed[self.evt.dat < thres] = 0.0
+                if work is None:
+                    work = self.evt.dat.copy()
+                work[work < thres] = 0.0
+                dat_to_be_summed = work
 
             if key.find("nhits") >= 0:
-                dat_to_be_summed[dat_to_be_summed > 0] = 1
+                dat_to_be_summed = np.where(dat_to_be_summed > 0, 1.0, dat_to_be_summed)
 
             if key.find("square") >= 0:
                 dat_to_be_summed = np.square(dat_to_be_summed)
