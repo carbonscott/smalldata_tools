@@ -1,0 +1,60 @@
+# host: sdfrome055
+# date: 2026-11-27T04:10:16Z
+# commit: lcls2 145dd2b0bbeacdead17e82f13e09d681cccfc61a (Merge pull request #81 from carbonscott/fix/78-cycle-evidence-dir) daqrun.sh 34fe06470882
+# cmd: EVENTS=2000 daqrun.sh record /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1 /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/lcls2
+# slurm: job 47367581 step 2 cpus 8; user cwang31
+2026-11-27T04:10:16Z netns net:[4026534370]; links up: lo ; lo: 172.24.33.120/32 127.0.0.1/8 ; /tmp: xfs
+tmpfs
+2026-11-27T04:10:21Z conda env: daq_20250402_r9; drp: /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/lcls2/install/bin/drp; daq_sim: /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/lcls2/install/bin/daq_sim
+2026-11-27T04:10:21Z $ daq_sim up -w /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd -p 0 --rate 120 --segments 1 --length 64 --det jungfrau --detach
+2026-11-27T04:10:59Z up exit 0; 2026-11-26T20:10:59.108-08:00 daq_sim: UP. Endpoints (also in endpoints.json):
+2026-11-27T04:10:59Z $ daq_sim status
+workdir /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd  host sdfrome055  platform 0  started 2026-11-26T20:10:22.756-08:00
+  configdb   pid 172250   alive
+  lgbk       pid 172276   alive
+  simxpm     pid 172278   alive
+  simsls     pid 172293   alive
+  control    pid 172321   RUNNING
+  teb0       pid 172322   RUNNING
+  jungfrau_0 pid 172323   RUNNING
+  control    state reset  transition reset  config BEAM  recording False  experiment tstx00001  run 0  last run 0
+  simxpm     PART:0:NumL0Acc = Thu Nov 26 20:11:00 2026 0.0
+  simxpm     PART:0:NumL0Inp = Thu Nov 26 20:11:00 2026 0.0
+2026-11-27T04:11:01Z $ daq_sim cycle -w /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd --events 2000
+2026-11-26T20:11:03.835-08:00 setState unallocated  -> unallocated  OK
+2026-11-26T20:11:04.073-08:00 setState allocated    -> allocated    OK
+2026-11-26T20:11:05.213-08:00 setState connected    -> connected    OK
+2026-11-26T20:11:07.485-08:00 setState configured   -> configured   OK
+2026-11-26T20:11:08.615-08:00 setState starting     -> starting     OK
+2026-11-26T20:11:08.618-08:00 setState paused       -> paused       OK
+2026-11-26T20:11:08.624-08:00 setState running      -> running      OK
+2026-11-26T20:11:25.947-08:00 DAQ:SIM:XPM:0:PART:0:NumL0Acc = 2050 (wanted >= 2000)
+2026-11-26T20:11:25.952-08:00 setState paused       -> paused       OK
+2026-11-26T20:11:27.111-08:00 counts after Disable: {'simxpm NumL0Acc': 2080, 'simxpm NumL0Inp': 2080, 'simxpm NumL0Acc group 0': 2080, 'simxpm links': {'jungfrau_0': {'group': 0, 'l1acc': 2080, 'link
+2026-11-26T20:11:27.114-08:00 setState starting     -> starting     OK
+2026-11-26T20:11:27.125-08:00 setState configured   -> configured   OK
+2026-11-26T20:11:27.277-08:00 setState connected    -> connected    OK
+2026-11-26T20:11:27.383-08:00 setState allocated    -> allocated    OK
+2026-11-26T20:11:27.438-08:00 setState unallocated  -> unallocated  OK
+2026-11-26T20:11:27.439-08:00 setState reset        -> reset        OK
+  simxpm NumL0Acc        2080
+  simxpm NumL0Inp        2080
+  simxpm NumL0Acc group 0 2080
+  drp_num_dma_errors     0
+  drp_num_th_error       0
+  xtc2 file              data/tst/tstx00001/xtc/tstx00001-r0001-s000-c000.xtc2 (2181288642 B)
+  psana2 events          2080
+  psana2 with data       2080
+  psana2 checks          PASS
+  psana2 seq             1..2080
+  psana2 seeds           {'0x1234': 2080}
+  equal (simxpm NumL0Acc == TEB_WrtCt == psana2 events) >= 2000: True
+2026-11-26T20:11:49.625-08:00 cycle PASS
+2026-11-27T04:11:49Z cycle exit 0
+2026-11-27T04:11:49Z $ daq_sim down
+2026-11-27T04:11:57Z down exit 0: 2026-11-26T20:11:57.466-08:00 daq_sim: down: clean
+2026-11-27T04:11:57Z recorded files:
+-r--r-----+ 1 root nobody     190258 Nov 26 20:11 data/tst/tstx00001/xtc/smalldata/tstx00001-r0001-s000-c000.smd.xtc2
+-r--r-----+ 1 root nobody 2181288642 Nov 26 20:11 data/tst/tstx00001/xtc/tstx00001-r0001-s000-c000.xtc2
+2026-11-27T04:11:57Z seed: 4660
+2026-11-27T04:11:57Z done

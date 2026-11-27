@@ -1,0 +1,52 @@
+# host: sdfiana025
+# date: 2026-11-27T04:18:52Z
+# commit: smalldata_tools 727462fef3db74caa3919a7cb0fdb2d7484cc398 (Combine max Sums keys across ranks with MAX, not SUM); base master 113800e157605e27b1a9794e1f6467a58a5b11cd
+# cmd: code_capture.sh /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h3/sdt-head /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h3/caps/code-at-head.txt
+$ git diff --numstat 113800e...HEAD
+4	1	lcls2_producers/smd_producer.py
+$ git diff 113800e...HEAD   (the whole diff)
+diff --git a/lcls2_producers/smd_producer.py b/lcls2_producers/smd_producer.py
+index 9a43507..12fb2c8 100755
+--- a/lcls2_producers/smd_producer.py
++++ b/lcls2_producers/smd_producer.py
+@@ -1007,7 +1007,10 @@ if not ds.is_srv():
+     for det in dets:
+         for key in det.storeSum().keys():
+             try:
+-                sumData = small_data.sum(det.storeSum()[key])
++                if "max" in key:
++                    sumData = small_data.max(det.storeSum()[key])
++                else:
++                    sumData = small_data.sum(det.storeSum()[key])
+                 sumDict["Sums"]["%s_%s" % (det._name, key)] = sumData
+             except:
+                 print("Problem with data sum for %s and key %s" % (det._name, key))
+$ grep -n -A3 "if \"max\" in key" lcls1_producers/smd_producer.py   (what the LCLS-I producer does)
+681:        if "max" in key:
+682-            sumData = small_data.max(det.storeSum()[key])
+683-        else:
+684-            sumData = small_data.sum(det.storeSum()[key])
+$ sed -n 207,217p smalldata_tools/lcls2/DetObject.py   (per rank: np.maximum for max keys, += for every other key)
+207                  if dat_to_be_summed is not None:
+208                      self._storeSum[key] = dat_to_be_summed.copy()
+209              else:
+210                  try:
+211                      if key.find("max") < 0:
+212                          self._storeSum[key] += dat_to_be_summed
+213                      else:
+214                          # Care about nan behaviour?
+215                          self._storeSum[key] = np.maximum(
+216                              self._storeSum[key], dat_to_be_summed
+217                          )
+$ grep -rn "np.minimum\|find(\"min\")" smalldata_tools/lcls2/DetObject.py lcls1_producers/smd_producer.py | wc -l
+0
+$ sed -n 826,834p psana/smalldata.py   (psana2 release lcls2_111826: SmallData.max and .min exist)
+826      def sum(self, value, inplace=False):
+827          result = self._reduction(value, MPI.SUM, inplace)
+828          return result
+829  
+830      def max(self, value, inplace=False):
+831          return self._reduction(value, MPI.MAX, inplace)
+832  
+833      def min(self, value, inplace=False):
+834          return self._reduction(value, MPI.MIN, inplace)

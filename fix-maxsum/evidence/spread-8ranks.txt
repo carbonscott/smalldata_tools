@@ -1,0 +1,41 @@
+# host: sdfrome055
+# date: 2026-11-27T04:25:26Z
+# commit: smalldata_tools master 113800e157605e27b1a9794e1f6467a58a5b11cd vs head 727462fef3db74caa3919a7cb0fdb2d7484cc398 (runs/*/run.log name the tree of each h5)
+# cmd: spread8.sh /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h3/caps/spread-8ranks.txt
+# scripts sha256: spread8.sh:d7ee03f5ffaa h5cmp.py:ae2e51e0549a 
+# master-8: # commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd (Merge pull r ... smd_producer: exit 0 in 24 s; log maste
+# master-8b: # commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd (Merge pull r ... smd_producer: exit 0 in 32 s; log maste
+# head-8: # commit: smalldata_tools 727462fef3db74caa3919a7cb0fdb2d7484cc398 (Combine max  ... smd_producer: exit 0 in 25 s; log head-
+# head-8b: # commit: smalldata_tools 727462fef3db74caa3919a7cb0fdb2d7484cc398 (Combine max  ... smd_producer: exit 0 in 29 s; log head-
+
+$ python h5cmp.py master-8b master-8   (two runs of master)
+A: master-8b/mfxsim0001_Run0001.h5   B: master-8/mfxsim0001_Run0001.h5
+event rows: A 2080  B 2080
+Sums/jungfrau_calib               DIFFERS: 384912 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 4.1e-07
+Sums/jungfrau_calib_max           DIFFERS: 508555 of 524288 elements differ; ratio A/B min 0.984 median 1.000 max 1.021; max |A-B|/max|B| 2.1e-02
+Sums/jungfrau_calib_square        DIFFERS: 395445 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 4.9e-07
+Sums/jungfrau_calib_thresADU5     DIFFERS: 374397 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 4.1e-07
+
+$ python h5cmp.py head-8b head-8   (two runs of the fix)
+A: head-8b/mfxsim0001_Run0001.h5   B: head-8/mfxsim0001_Run0001.h5
+event rows: A 2080  B 2080
+Sums/jungfrau_calib               DIFFERS: 400567 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 5.5e-07
+Sums/jungfrau_calib_max           DIFFERS: 0 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 0.0e+00
+Sums/jungfrau_calib_square        DIFFERS: 434159 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 6.8e-07
+Sums/jungfrau_calib_thresADU5     DIFFERS: 398033 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 4.8e-07
+
+$ python h5cmp.py head-8 master-8   (fix vs master)
+A: head-8/mfxsim0001_Run0001.h5   B: master-8/mfxsim0001_Run0001.h5
+event rows: A 2080  B 2080
+Sums/jungfrau_calib               DIFFERS: 414239 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 6.2e-07
+Sums/jungfrau_calib_max           DIFFERS: 524272 of 524288 elements differ; ratio A/B min 0.200 median 0.201 max 0.205; max |A-B|/max|B| 8.0e-01
+Sums/jungfrau_calib_square        DIFFERS: 435762 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 6.8e-07
+Sums/jungfrau_calib_thresADU5     DIFFERS: 413429 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 6.2e-07
+
+$ python h5cmp.py head-8b master-8b   (fix vs master (second pair))
+A: head-8b/mfxsim0001_Run0001.h5   B: master-8b/mfxsim0001_Run0001.h5
+event rows: A 2080  B 2080
+Sums/jungfrau_calib               DIFFERS: 393457 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 4.8e-07
+Sums/jungfrau_calib_max           DIFFERS: 524272 of 524288 elements differ; ratio A/B min 0.200 median 0.201 max 0.205; max |A-B|/max|B| 8.0e-01
+Sums/jungfrau_calib_square        DIFFERS: 383742 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 4.3e-07
+Sums/jungfrau_calib_thresADU5     DIFFERS: 389802 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 4.8e-07

@@ -1,0 +1,56 @@
+# host: sdfrome055
+# date: 2026-11-27T04:22:18Z
+# commit: smalldata_tools 727462fef3db74caa3919a7cb0fdb2d7484cc398 (Combine max Sums keys across ranks with MAX, not SUM); recording lcls2 145dd2b0bbea
+# cmd: REF_H5=/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h3/runs/head-8/h5/mfxsim0001_Run0001.h5 run_maxsum.sh /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1 /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h3/runs/head-8b 8 /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h3/sdt-head
+# tree: ?? lcls2_producers/prod_config_maxsum306.py (untracked config only; no tracked file modified)
+# scripts sha256: run_maxsum.sh:f6903d9fe7c7 maxcheck.py:1afd9cd1aa61 h5cmp.py:ae2e51e0549a prod_config_maxsum306.py:a4f980e21ff6 calibws_jf.py:42605d659412 shim/sitecustomize.py:194acdc0befd 
+# psana env: /sdf/group/lcls/ds/ana/sw/conda2/rel/ana/lcls2_111826/setup_env_ana.sh
+# slurm: job 47367581 step 18 cpus 10
+2026-11-27T04:22:18Z network namespace net:[4026534431]; links up: lo 
+2026-11-27T04:22:19Z recording /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1: 1 bigdata, 1 smalldata xtc2 file(s), presented as experiment mfxsim0001 run 1
+2026-11-27T04:22:25Z psana2 release: /sdf/group/lcls/ds/ana/sw/conda2/rel/ana/lcls2_111826/install/lib/python3.13/site-packages/psana
+[1795753343.516708] [sdfrome055:192017:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+calibws_jf: ready on 127.0.0.1:31877: jungfrau_000001 pedestal 1031.5 gain 40.0 fault None
+2026-11-27T04:22:26Z sum list: ret_dict["jungfrau"] = [
+ret_dict["jungfrau"] = ["calib", "calib_max", "calib_square", "calib_thresADU5"]
+2026-11-27T04:22:26Z the reduction this smalldata_tools runs at the end of the run (lcls2_producers/smd_producer.py):
+1006:    sumDict = {"Sums": {}}
+1007-    for det in dets:
+1008-        for key in det.storeSum().keys():
+1009-            try:
+1010-                if "max" in key:
+1011-                    sumData = small_data.max(det.storeSum()[key])
+1012-                else:
+1013-                    sumData = small_data.sum(det.storeSum()[key])
+1014-                sumDict["Sums"]["%s_%s" % (det._name, key)] = sumData
+1015-            except:
+1016-                print("Problem with data sum for %s and key %s" % (det._name, key))
+2026-11-27T04:22:26Z ranks: 8 MPI ranks = 1 smd0 + 1 event builder + 1 srv + 5 bigdata rank(s) that read events
+2026-11-27T04:22:26Z $ mpirun -n 8 python -m mpi4py.run smd_producer.py --experiment mfxsim0001 --run 1 --psdm_dir <out>/xtc --directory <out>/h5 --noarch --all_events --config maxsum306
+2026-11-27T04:22:55Z smd_producer: exit 0 in 29 s; log head-8b/producer.log (0 'Failed analyzing' lines, 0 'Problem with data sum' lines)
+2026-11-27T04:22:55Z bigdata ranks that processed events: 0 distinct rank ids in the log; 'Processed evt' lines: 23
+2026-11-27T04:22:55Z $ python maxcheck.py --h5 mfxsim0001_Run0001.h5
+[PSANA-INFO RANK:0 1795753380.144345088] SerialDataSource Warning: unable to connect to http://127.0.0.1:31877/lgbk/mfxsim0001/ws/1/current_files_for_live_mode
+truth: 2080 events read by one psana2 process; per-pixel max of det.raw.calib, shape (1, 512, 1024)
+h5:    mfxsim0001_Run0001.h5  Sums/jungfrau_calib_max shape (1, 512, 1024), 2080 event rows
+global max: truth 227272.484  h5 227272.484  ratio h5/truth 1.000
+pixels 0 in the h5 but not in the truth (smalldata_tools' bad-pixel mask): 0
+pixels equal to the truth (rtol 1e-5), masked pixels counted as equal: 524288 of 524288
+per-pixel ratio h5/truth over 524272 pixels with truth > 0: min 1.000  median 1.000  max 1.000
+pixels where h5 exceeds the truth by > 1%: 0
+Sums/jungfrau_calib            vs float64 truth: 524288 of 524288 pixels within the float32 rounding bound; max |h5-truth|/bound 0.011; ratio of totals 0.9999990
+Sums/jungfrau_calib_square     vs float64 truth: 524288 of 524288 pixels within the float32 rounding bound; max |h5-truth|/bound 0.006; ratio of totals 0.9999998
+Sums/jungfrau_calib_thresADU5  vs float64 truth: 524288 of 524288 pixels within the float32 rounding bound; max |h5-truth|/bound 0.012; ratio of totals 0.9999989
+VERDICT: calib_max EQUALS the per-pixel max
+[1795753378.226377] [sdfrome055:192863:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+2026-11-27T04:23:18Z maxcheck exit 0
+2026-11-27T04:23:18Z $ python h5cmp.py <this h5> /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h3/runs/head-8/h5/mfxsim0001_Run0001.h5
+A: head-8b/mfxsim0001_Run0001.h5   B: head-8/mfxsim0001_Run0001.h5
+event rows: A 2080  B 2080
+Sums keys A: jungfrau_calib, jungfrau_calib_max, jungfrau_calib_square, jungfrau_calib_thresADU5
+Sums/jungfrau_calib               (1, 512, 1024) float32  DIFFERS: 400567 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 5.5e-07
+Sums/jungfrau_calib_max           (1, 512, 1024) float32  DIFFERS: 0 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 0.0e+00
+Sums/jungfrau_calib_square        (1, 512, 1024) float32  DIFFERS: 434159 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 6.8e-07
+Sums/jungfrau_calib_thresADU5     (1, 512, 1024) float32  DIFFERS: 398033 of 524288 elements differ; ratio A/B min 1.000 median 1.000 max 1.000; max |A-B|/max|B| 4.8e-07
+2026-11-27T04:23:18Z h5cmp exit 0
+2026-11-27T04:23:18Z done
