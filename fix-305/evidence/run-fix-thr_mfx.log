@@ -1,0 +1,72 @@
+# host: sdfrome055
+# date: 2026-11-27T04:31:21Z
+# commit: smalldata_tools 37c56ea6a71e4fa359f2ff5a8de4a3c2633f98aa (fix/305-threshold-order; uncommitted: )
+# cmd: run_thr.sh /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h1/runs3/fix-thr_mfx thr_mfx 4 /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h1/sdt-fix 
+# scripts sha256: run_thr.sh:361c0bb33630 sumcheck.py:68006d763bc5 prod_config_thr_mfx.py:856090424837 calibws_jf.py:42605d659412 shim/sitecustomize.py:3b36dc67cbab 
+# psana env: /sdf/group/lcls/ds/ana/sw/conda2/rel/ana/lcls2_111826/setup_env_ana.sh
+# slurm: job 47367581 step 38 cpus 8
+2026-11-27T04:31:21Z network namespace net:[4026534367]; links up: lo 
+2026-11-27T04:31:21Z recording /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd: 1 bigdata, 1 smalldata xtc2 file(s), presented as experiment mfxsim0001 run 1
+2026-11-27T04:31:27Z psana2 release: /sdf/group/lcls/ds/ana/sw/conda2/rel/ana/lcls2_111826/install/lib/python3.13/site-packages/psana
+[1795753885.631286] [sdfrome055:208245:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+calibws_jf: ready on 127.0.0.1:31597: jungfrau_000001 pedestal 1031.5 gain 40.0 fault None
+2026-11-27T04:31:28Z processSums in this tree (smalldata_tools/lcls2/DetObject.py):
+186:    def processSums(self):
+187-        # Keys without a threshold first, then rising thresholds on one copy of the
+188-        # event data (zeroing below 1 then below 5 equals zeroing below 5), so every
+189-        # key sees its own definition and self.evt.dat stays untouched.
+190-        thresholds = {
+191-            key: float(skey.replace("thresADU", ""))
+192-            for key in self._storeSum
+193-            for skey in key.split("_")
+194-            if skey.find("thresADU") >= 0
+195-        }
+196-        work = None
+197-        for key in sorted(self._storeSum, key=lambda k: thresholds.get(k, -1.0e9)):
+198-            asImg = False
+2026-11-27T04:31:28Z sum keys and subsampling of prod_config_thr_mfx.py:
+8:def get_sum_algos(run):
+9-    ret_dict = {}
+10-    if run > 0:
+11-        ret_dict["all"] = [
+12-            "calib",
+13-            "calib_square",
+14-            "calib_thresADU1",
+15-        ]
+16-        ret_dict["jungfrau"] = ["calib_thresADU5", "calib_max"]
+--
+20:def get_subsample_config(run):
+21-    return {"detectors": ["jungfrau"], "interval": 0.5}
+22-
+23-
+24-epicsPV = []
+25-epicsArchFilePV = []
+26-epicsOncePV = []
+2026-11-27T04:31:28Z ranks: 4 MPI ranks = 1 smd0 + 1 event builder + 1 srv + 1 bigdata rank(s)
+2026-11-27T04:31:28Z $ mpirun -n 4 python -m mpi4py.run smd_producer.py --experiment mfxsim0001 --run 1 --psdm_dir <out>/xtc --directory <out>/h5 --noarch --all_events --config thr_mfx
+2026-11-27T04:32:00Z smd_producer: exit 0 in 32 s; log fix-thr_mfx/producer.log (0 'Failed analyzing' lines)
+2026-11-27T04:32:00Z stand-in requests: 9 (8 answered 200; logbook requests 1)
+2026-11-27T04:32:00Z $ python sumcheck.py --h5 mfxsim0001_Run0001.h5 --ref-h5 /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h1/runs3/master-thr_mfx/h5/mfxsim0001_Run0001.h5
+[PSANA-INFO RANK:0 1795753925.047406336] SerialDataSource Warning: unable to connect to https://pswww.slac.stanford.edu/ws/lgbk/lgbk/mfxsim0001/ws/1/current_files_for_live_mode
+h5: mfxsim0001_Run0001.h5  Sums keys for jungfrau: calib, calib_max, calib_square, calib_thresADU1, calib_thresADU5
+h5: subsampled images subsample/jungfrau/data shape (35, 1, 512, 1024) dtype float32, 35 timestamps
+truth: 2080 events with data read by one psana2 process; det.raw.calib shape (1, 512, 1024)
+CHECK Sums/jungfrau_calib PASS: 524288 of 524288 pixels equal the definition bit for bit; 0 differ (0 of them 0 in the h5); max |h5 - float64 truth| 62.75
+CHECK Sums/jungfrau_calib_max PASS: 524288 of 524288 pixels equal the definition bit for bit; 0 differ (0 of them 0 in the h5); max |h5 - float64 truth| 0
+CHECK Sums/jungfrau_calib_square PASS: 524288 of 524288 pixels equal the definition bit for bit; 0 differ (0 of them 0 in the h5); max |h5 - float64 truth| 2.691e+07
+CHECK Sums/jungfrau_calib_thresADU1 PASS: 524288 of 524288 pixels equal the definition bit for bit; 0 differ (0 of them 0 in the h5); max |h5 - float64 truth| 65.52
+CHECK Sums/jungfrau_calib_thresADU5 PASS: 524288 of 524288 pixels equal the definition bit for bit; 0 differ (0 of them 0 in the h5); max |h5 - float64 truth| 65.93
+  subsampled image subsample/jungfrau/data[0]: 0 pixels differ from the event's calib (0 of them 0 in the h5); 28767 pixels of the event have calib < 5 and calib != 0
+  subsampled image subsample/jungfrau/data[1]: 0 pixels differ from the event's calib (0 of them 0 in the h5); 28673 pixels of the event have calib < 5 and calib != 0
+  subsampled image subsample/jungfrau/data[2]: 0 pixels differ from the event's calib (0 of them 0 in the h5); 29031 pixels of the event have calib < 5 and calib != 0
+  subsampled image subsample/jungfrau/data[34]: 0 pixels differ from the event's calib (0 of them 0 in the h5); 28807 pixels of the event have calib < 5 and calib != 0
+CHECK subsampled full images PASS: 35 of 35 equal their event's calib on every pixel
+vs ref mfxsim0001_Run0001.h5: Sums/jungfrau_calib byte-identical (dtype float32/float32)
+vs ref mfxsim0001_Run0001.h5: Sums/jungfrau_calib_max byte-identical (dtype float32/float32)
+vs ref mfxsim0001_Run0001.h5: Sums/jungfrau_calib_square byte-identical (dtype float32/float32)
+vs ref mfxsim0001_Run0001.h5: Sums/jungfrau_calib_thresADU1 byte-identical (dtype float32/float32)
+vs ref mfxsim0001_Run0001.h5: Sums/jungfrau_calib_thresADU5 byte-identical (dtype float32/float32)
+VERDICT: every Sums key equals its definition and every saved image its event
+[1795753923.634622] [sdfrome055:213951:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+2026-11-27T04:32:27Z sumcheck exit 0
+exit 0

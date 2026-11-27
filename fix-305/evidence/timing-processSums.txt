@@ -1,0 +1,31 @@
+# host: sdfiana025  (summary; the timed runs ran on sdfrome042, job 47367580, see each run's host line below)
+# date: 2026-11-27T04:33:55Z
+# commit: smalldata_tools fix 37c56ea6a71e4fa359f2ff5a8de4a3c2633f98aa vs master 113800e157605e27b1a9794e1f6467a58a5b11cd vs copy-per-key (master + issue's .copy() line, uncommitted)
+# cmd: timingsum.sh /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h1/runs2  (runs from harness/timing2.sh: run_thr.sh <rec> <out> thr_mfx 4 <tree> timing)
+keys (MFX order): calib, calib_square, calib_thresADU1, calib_thresADU5, calib_max; one 512x1024 Jungfrau module, float32
+4 MPI ranks (1 bigdata rank does every processSums call), 8 cpus, same node, runs interleaved master/fix/copy x3
+
+  2026-11-27T04:23:31Z node load: 25.20 25.59 24.77 35/3144 3347213
+  2026-11-27T04:24:38Z node load: 27.61 26.17 25.03 21/3129 3348689
+  2026-11-27T04:25:43Z node load: 23.65 25.39 24.84 19/3133 3350208
+  2026-11-27T04:26:50Z node load: 26.69 26.06 25.12 11/3133 3351691
+  2026-11-27T04:27:58Z node load: 26.13 26.05 25.18 11/3131 3353572
+  2026-11-27T04:29:14Z node load: 24.24 25.49 25.05 6/3133 3355361
+  2026-11-27T04:30:27Z node load: 25.60 25.70 25.16 21/3137 3357274
+  2026-11-27T04:31:33Z node load: 23.93 25.43 25.12 38/3153 3359470
+  2026-11-27T04:32:38Z node load: 27.25 26.22 25.42 36/3136 3360960
+
+run              host         commit      calls  median us     p10 us     p90 us
+timing-master-1  sdfrome042   113800e157   2080     5136.1     5114.2     5167.9
+timing-fix-1     sdfrome042   37c56ea6a7   2080     5290.4     5254.9     5375.7
+timing-copy-1    sdfrome042   113800e157   2080     5671.6     5630.1     5721.7
+timing-master-2  sdfrome042   113800e157   2080     5146.6     5119.8     5189.7
+timing-fix-2     sdfrome042   37c56ea6a7   2080     5216.9     5195.2     5312.4
+timing-copy-2    sdfrome042   113800e157   2080     5658.7     5619.9     5715.4
+timing-master-3  sdfrome042   113800e157   2080     5228.4     5191.1     5279.8
+timing-fix-3     sdfrome042   37c56ea6a7   2080     5299.1     5271.8     5394.7
+timing-copy-3    sdfrome042   113800e157   2080     5730.2     5675.0     5800.6
+
+master  all 6240 calls: median 5157.0 us per event (+0.0 us, +0.0 % vs master)
+fix     all 6240 calls: median 5283.1 us per event (+126.2 us, +2.4 % vs master)
+copy    all 6240 calls: median 5682.6 us per event (+525.7 us, +10.2 % vs master)
