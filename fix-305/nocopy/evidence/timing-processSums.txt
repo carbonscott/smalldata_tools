@@ -1,0 +1,38 @@
+# host: sdfiana025  (summary; the timed runs ran on sdfrome118, job 47386055, see each run's host line below)
+# date: 2026-11-27T07:51:55Z
+# commit: smalldata_tools nocopy 9456814a62080c57f21d8c1279687ef888ded9ca vs master 113800e157605e27b1a9794e1f6467a58a5b11cd vs fix-with-copy 37c56ea6a71e4fa359f2ff5a8de4a3c2633f98aa vs copy-per-key (master + issue's .copy() line, uncommitted)
+# cmd: python summary over /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h1/runs4/timing-*  (runs from harness/proof4.sh: run_thr.sh <rec> <out> thr_mfx 4 <tree> timing)
+keys (MFX order): calib, calib_square, calib_thresADU1, calib_thresADU5, calib_max; one 512x1024 Jungfrau module, float32
+4 MPI ranks (1 bigdata rank does every processSums call), 8 cpus, same node, runs interleaved master/fix/nocopy/copy x3
+
+  2026-11-27T07:27:22Z node load: 101.27 99.61 98.64 99/3277 2112313
+  2026-11-27T07:28:36Z node load: 100.28 99.73 98.76 99/3285 2113840
+  2026-11-27T07:29:49Z node load: 99.81 99.81 98.87 100/3280 2115341
+  2026-11-27T07:31:02Z node load: 99.06 99.66 98.89 99/3287 2117287
+  2026-11-27T07:32:16Z node load: 99.14 99.60 98.93 98/3279 2118668
+  2026-11-27T07:33:29Z node load: 99.70 99.74 99.04 113/3294 2120063
+  2026-11-27T07:34:47Z node load: 99.83 99.89 99.15 101/3284 2122228
+  2026-11-27T07:36:00Z node load: 100.88 100.34 99.37 99/3293 2123945
+  2026-11-27T07:37:16Z node load: 100.81 100.43 99.48 98/3283 2125895
+  2026-11-27T07:38:31Z node load: 101.16 100.82 99.70 98/3305 2127315
+  2026-11-27T07:39:46Z node load: 99.96 100.54 99.70 101/3288 2128762
+  2026-11-27T07:41:01Z node load: 99.56 100.40 99.72 100/3284 2130759
+
+run               host        commit      calls  median us      p10      p90
+timing-master-1   sdfrome118  113800e157   2080     5949.5   5720.9   6735.2
+timing-fix-1      sdfrome118  37c56ea6a7   2080     5979.8   5818.2   6177.1
+timing-nocopy-1   sdfrome118  9456814a62   2080     5873.0   5753.7   6142.5
+timing-copy-1     sdfrome118  113800e157   2080     6356.6   6205.4   6601.3
+timing-master-2   sdfrome118  113800e157   2080     5821.2   5696.9   6055.2
+timing-fix-2      sdfrome118  37c56ea6a7   2080     6226.3   6120.7   6536.5
+timing-nocopy-2   sdfrome118  9456814a62   2080     5793.2   5695.5   6043.2
+timing-copy-2     sdfrome118  113800e157   2080     6426.4   6235.8   6913.0
+timing-master-3   sdfrome118  113800e157   2080     5923.4   5718.9   6379.4
+timing-fix-3      sdfrome118  37c56ea6a7   2080     6218.0   5923.7   6602.8
+timing-nocopy-3   sdfrome118  9456814a62   2080     6117.5   5748.3   6465.1
+timing-copy-3     sdfrome118  113800e157   2080     6644.2   6315.7   7020.9
+
+master  median 5891.3 us per event (+0.0 us, +0.0 % vs master); per-round medians 5950 5821 5923
+fix     median 6152.4 us per event (+261.2 us, +4.4 % vs master); per-round medians 5980 6226 6218
+nocopy  median 5893.6 us per event (+2.3 us, +0.0 % vs master); per-round medians 5873 5793 6118
+copy    median 6450.4 us per event (+559.1 us, +9.5 % vs master); per-round medians 6357 6426 6644

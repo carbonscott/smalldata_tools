@@ -1,0 +1,81 @@
+# host: sdfiana025
+# date: 2026-11-27T07:51:46Z
+# commit: smalldata_tools 9456814a62080c57f21d8c1279687ef888ded9ca (fix/305-sort-no-copy)
+# cmd: diffcap4.sh /sdf/scratch/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h1/sdt-nocopy: git diff --numstat master...HEAD; git show --format=... HEAD; black 26.5.1 --check on the changed files
+$ git diff --numstat 113800e...HEAD   (lines added, removed)
+10	1	lcls2_producers/smd_producer.py
+7	2	smalldata_tools/lcls2/DetObject.py
+$ uvx black==26.5.1 --check smalldata_tools/lcls2/DetObject.py lcls2_producers/smd_producer.py
+All done! ✨ 🍰 ✨
+2 files would be left unchanged.
+black exit 0
+$ git show HEAD
+commit 9456814a62080c57f21d8c1279687ef888ded9ca
+parent 113800e157605e27b1a9794e1f6467a58a5b11cd
+
+    lcls2 Sums: sort keys so in-place thresholds never reach another key; sum after the subsampled image is saved
+
+
+diff --git a/lcls2_producers/smd_producer.py b/lcls2_producers/smd_producer.py
+index 9a43507..a27fbce 100755
+--- a/lcls2_producers/smd_producer.py
++++ b/lcls2_producers/smd_producer.py
+@@ -825,6 +825,7 @@ for evt_num, evt in enumerate(event_iter):
+ 
+     # detector data using DetObject
+     userDict = {}
++    sum_dets = []
+     for det in dets:
+         try:
+             det.getData(evt)
+@@ -836,7 +837,7 @@ for evt_num, evt in enumerate(event_iter):
+                     userDict[det._name + "_env"] = envData
+             except:
+                 pass
+-            det.processSums()
++            sum_dets.append(det)
+             # print(userDict[det._name])
+         except Exception as e:
+             logger.warning(f"Failed analyzing det {det} on evt {evt_num}")
+@@ -875,6 +876,14 @@ for evt_num, evt in enumerate(event_iter):
+         if subsample_data:
+             small_data.event(evt, subsample_data, align_group="subsample")
+ 
++    # Sums last: their thresholds change det.evt.dat in place.
++    for det in sum_dets:
++        try:
++            det.processSums()
++        except Exception as e:
++            logger.warning(f"Failed analyzing det {det} on evt {evt_num}")
++            print(e)
++
+     # Integrating detectors
+ 
+     if len(int_dets) > 0:
+diff --git a/smalldata_tools/lcls2/DetObject.py b/smalldata_tools/lcls2/DetObject.py
+index f24bf26..9bf7a54 100644
+--- a/smalldata_tools/lcls2/DetObject.py
++++ b/smalldata_tools/lcls2/DetObject.py
+@@ -184,7 +184,12 @@ class DetObjectClass(object):
+             #     print(e)
+ 
+     def processSums(self):
+-        for key in self._storeSum.keys():
++        # Thresholds zero self.evt.dat in place: run keys without one first, then
++        # thresholds rising (zeroing below 1 then below 5 equals zeroing below 5).
++        thres_of = lambda k: (
++            float(k.split("thresADU")[1].split("_")[0]) if "thresADU" in k else -1.0e9
++        )
++        for key in sorted(self._storeSum, key=thres_of):
+             asImg = False
+             thres = -1.0e9
+             for skey in key.split("_"):
+@@ -198,7 +203,7 @@ class DetObjectClass(object):
+                 dat_to_be_summed[self.evt.dat < thres] = 0.0
+ 
+             if key.find("nhits") >= 0:
+-                dat_to_be_summed[dat_to_be_summed > 0] = 1
++                dat_to_be_summed = np.where(dat_to_be_summed > 0, 1.0, dat_to_be_summed)
+ 
+             if key.find("square") >= 0:
+                 dat_to_be_summed = np.square(dat_to_be_summed)
