@@ -1,0 +1,12 @@
+=== 2026-11-27T04:18:15Z done master-roi2d srun rc=0
+=== 2026-11-27T04:18:46Z done head-roi2d srun rc=0
+=== 2026-11-27T04:19:18Z done head-roi2d-strict srun rc=0
+=== 2026-11-27T04:20:02Z done master-sim srun rc=0
+=== 2026-11-27T04:20:48Z done head-sim srun rc=0
+=== 2026-11-27T04:21:42Z done head-sim-strict srun rc=0
+=== 2026-11-27T04:22:16Z done master-roi2d-8r srun rc=0
+=== 2026-11-27T04:22:47Z done head-roi2d-8r srun rc=0
+=== 2026-11-27T04:23:18Z done head-roi2d-strict-8r srun rc=0
+=== 2026-11-27T04:23:49Z done head-sim-8r srun rc=0
+=== 2026-11-27T04:24:28Z done master-sim-8r srun rc=0
+=== ALL DONE

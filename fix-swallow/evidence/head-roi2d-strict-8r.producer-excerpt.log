@@ -1,0 +1,106 @@
+# host: sdfrome055
+# date: 2026-11-27T04:22:47Z
+# commit: smalldata_tools 202f4e8deb093ab550b47b6f8b92eb0a29ee55c5
+# cmd: excerpt.sh head-roi2d-strict-8r 60 40 (of: NP=8 run_swallow.sh /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd/data/tst/tstx00001 /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r x6roi2d /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-fix --strict)
+# excerpt of runs/head-roi2d-strict-8r/producer.log (2313 lines): lines 1-60 and 2274-2313
+[1795753374.773322] [sdfrome055:192824:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795753374.865483] [sdfrome055:192826:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795753374.916970] [sdfrome055:192827:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795753374.968402] [sdfrome055:192825:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795753375.015357] [sdfrome055:192829:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795753375.023590] [sdfrome055:192822:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795753375.047781] [sdfrome055:192823:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795753375.060431] [sdfrome055:192828:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[ 2026-11-26 20:22:57,400 | INFO | smd_producer.py] MPI size: 8
+[ 2026-11-26 20:22:57,400 | INFO | smd_producer.py] psana conda environment is psana_20260904
+[ 2026-11-26 20:22:57,400 | INFO | smd_producer.py] /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-fix
+[ 2026-11-26 20:23:03,131 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:23:03,131 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:23:03,136 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:23:03,183 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:23:03,413 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:23:03,414 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:23:03,503 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:23:03,567 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:23:07,126 | INFO | smd_producer.py] Producer cfg file: <prod_config_x6roi2d>.
+[ 2026-11-26 20:23:07,151 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/xtc
+[ 2026-11-26 20:23:07,153 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/xtc
+[ 2026-11-26 20:23:07,154 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/xtc
+[ 2026-11-26 20:23:07,154 | INFO | smd_producer.py] Will write small data file to /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/h5/mfxsim0001_Run0001.h5
+[ 2026-11-26 20:23:07,155 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/xtc
+[ 2026-11-26 20:23:07,157 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/xtc
+[ 2026-11-26 20:23:07,159 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/xtc
+[ 2026-11-26 20:23:07,162 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/xtc
+[ 2026-11-26 20:23:07,162 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/xtc
+[PSANA-INFO RANK:0 1795753387.748781312] Communicators [MPI-role] layout: smd0=1 eb=1 bd=5 srv=1 (world=8)
+[PSANA-INFO RANK:0 1795753387.788445696] MPIDataSource Warning: unable to connect to http://127.0.0.1:31877/lgbk/mfxsim0001/ws/1/current_files_for_live_mode
+#### DATASOURCE AND PSANA ENV VAR INFO ####
+Instantiated data source with arguments: {'exp': 'mfxsim0001', 'run': 1, 'dir': '/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/xtc'}
+MPI size: 8
+PS_EB_NODES=1
+PS_SRV_NODES=1
+PS_SMD_N_EVENTS=1000
+DS batchsize: 1
+#### END DATASOURCE AND PSANA ENV VAR INFO ####
+
+[ 2026-11-26 20:23:07,808 | INFO | smd_producer.py] Unique user rank: 6
+[ 2026-11-26 20:23:08,660 | INFO | smd_producer.py] Opening the h5file /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/h5/mfxsim0001_Run0001.h5, gathering at 100
+[PSANA-INFO RANK:0 1795753388.660684800] RunParallel [MPI-role] rank=0 host=sdfrome055 numa_id=4 numa_size=6
+could not find LCLS2 EPICS PV lxt in datacould not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+
+could not find LCLS2 EPICS PV txt in data
+[ 2026-11-26 20:23:08,661 | INFO | DetObject.py] Getting the detector for: jungfrau
+[ 2026-11-26 20:23:08,661 | INFO | DetObject.py] Getting the detector for: jungfrau
+[ 2026-11-26 20:23:08,665 | INFO | smd_producer.py] smalldata file has been successfully created.
+could not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+could not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+could not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+[ 2026-11-26 20:23:08,665 | INFO | smd_producer.py] Default detectors loaded:
+[ 2026-11-26 20:23:08,665 | INFO | smd_producer.py] damage: damage
+could not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+[... lines 61-2273 not shown ...]
+Problem with data sum for jungfrau and key calib_thresADU1
+Problem with data sum for jungfrau and key calib_thresADU1
+Problem with data sum for jungfrau and key calib_thresADU1
+Problem with data sum for jungfrau and key calib_thresADU5Problem with data sum for jungfrau and key calib_thresADU5
+Problem with data sum for jungfrau and key calib_thresADU5
+Problem with data sum for jungfrau and key calib_thresADU5
+Problem with data sum for jungfrau and key calib_thresADU5
+
+Problem with data sum for jungfrau and key calib_max
+Problem with data sum for jungfrau and key calib_max
+Problem with data sum for jungfrau and key calib_max
+Problem with data sum for jungfrau and key calib_maxProblem with data sum for jungfrau and key calib_max
+
+[ 2026-11-26 20:23:12,009 | INFO | smd_producer.py] Saving detector configuration to UserDataCfg
+[ 2026-11-26 20:23:12,009 | ERROR | smd_producer.py] Detector jungfrau: analysis failed on 373 events on rank 3; its user data are missing from the h5 for those events
+[ 2026-11-26 20:23:12,009 | ERROR | smd_producer.py] Detector jungfrau: analysis failed on 659 events on rank 5; its user data are missing from the h5 for those events
+[ 2026-11-26 20:23:12,009 | ERROR | smd_producer.py] Detector jungfrau: analysis failed on 301 events on rank 4; its user data are missing from the h5 for those events
+[ 2026-11-26 20:23:12,010 | ERROR | smd_producer.py] Detector jungfrau: analysis failed on 373 events on rank 6; its user data are missing from the h5 for those events
+[ 2026-11-26 20:23:12,026 | ERROR | smd_producer.py] Detector jungfrau: analysis failed on 374 events on rank 2; its user data are missing from the h5 for those events
+Joining: 1 files --> mfxsim0001_Run0001.h5
+[ 2026-11-26 20:23:12,050 | INFO | smd_producer.py] Getting epics data from Archiver (rank: 2)
+/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-fix/lcls2_producers/smd_producer.py:1104: DeprecationWarning: There is no current event loop
+  loop = asyncio.get_event_loop()
+########## JOB TIME: 0.249314 minutes ###########
+Last Event: 372
+--------------------------------------------------------------------------
+MPI_ABORT was invoked on rank 7 in communicator MPI_COMM_WORLD
+  Proc: [[24075,1],7]
+  Errorcode: 1
+
+NOTE: invoking MPI_ABORT causes Open MPI to kill all MPI processes.
+You may or may not see output from other processes, depending on
+exactly when Open MPI kills them.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+prterun has exited due to process rank 7 with PID 0 on node sdfrome055 calling
+"abort". This may have caused other processes in the application to be
+terminated by signals sent by prterun (as reported here).
+--------------------------------------------------------------------------
+ 

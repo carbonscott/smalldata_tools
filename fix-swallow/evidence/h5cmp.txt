@@ -1,0 +1,97 @@
+# host: sdfiana025
+# date: 2026-11-27T04:25:52Z
+# commit: smalldata_tools 202f4e8deb093ab550b47b6f8b92eb0a29ee55c5 (head; master 113800e157605e27b1a9794e1f6467a58a5b11cd)
+# cmd: cmp_capture.sh /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/captures/h5cmp.txt master-sim head-sim master-roi2d head-roi2d head-roi2d head-roi2d-strict master-sim-8r head-sim-8r master-sim-8r master-sim-8r-b head-roi2d-8r head-roi2d-strict-8r
+
+=== master-sim vs head-sim
+master-sim: # commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd | smd_producer: exit status 0 after 40 s (4 MPI ranks); producer.log 86 lines
+head-sim: # commit: smalldata_tools 202f4e8deb093ab550b47b6f8b92eb0a29ee55c5 | smd_producer: exit status 0 after 42 s (4 MPI ranks); producer.log 86 lines
+A: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-sim/h5/mfxsim0001_Run0001.h5
+B: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-sim/h5/mfxsim0001_Run0001.h5
+datasets: A 45, B 46
+only in A: []
+only in B: ['failed_events/jungfrau']
+common datasets: 45; byte-identical: 45; identical after sorting rows by timestamp: 0; float arrays not identical: 0; other differences: 0
+
+=== master-roi2d vs head-roi2d
+master-roi2d: # commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd | smd_producer: exit status 0 after 24 s (4 MPI ranks); producer.log 4255 lines
+head-roi2d: # commit: smalldata_tools 202f4e8deb093ab550b47b6f8b92eb0a29ee55c5 | smd_producer: exit status 0 after 27 s (4 MPI ranks); producer.log 2188 lines
+A: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-roi2d/h5/mfxsim0001_Run0001.h5
+B: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d/h5/mfxsim0001_Run0001.h5
+datasets: A 31, B 32
+only in A: []
+only in B: ['failed_events/jungfrau']
+common datasets: 31; byte-identical: 31; identical after sorting rows by timestamp: 0; float arrays not identical: 0; other differences: 0
+
+=== head-roi2d vs head-roi2d-strict
+head-roi2d: # commit: smalldata_tools 202f4e8deb093ab550b47b6f8b92eb0a29ee55c5 | smd_producer: exit status 0 after 27 s (4 MPI ranks); producer.log 2188 lines
+head-roi2d-strict: # commit: smalldata_tools 202f4e8deb093ab550b47b6f8b92eb0a29ee55c5 | smd_producer: exit status 1 after 28 s (4 MPI ranks); producer.log 2201 lines
+A: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d/h5/mfxsim0001_Run0001.h5
+B: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict/h5/mfxsim0001_Run0001.h5
+datasets: A 32, B 32
+only in A: []
+only in B: []
+common datasets: 32; byte-identical: 32; identical after sorting rows by timestamp: 0; float arrays not identical: 0; other differences: 0
+
+=== master-sim-8r vs head-sim-8r
+master-sim-8r: # commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd | smd_producer: exit status 0 after 34 s (8 MPI ranks); producer.log 111 lines
+head-sim-8r: # commit: smalldata_tools 202f4e8deb093ab550b47b6f8b92eb0a29ee55c5 | smd_producer: exit status 0 after 28 s (8 MPI ranks); producer.log 112 lines
+A: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-sim-8r/h5/mfxsim0001_Run0001.h5
+B: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-sim-8r/h5/mfxsim0001_Run0001.h5
+datasets: A 45, B 46
+only in A: []
+only in B: ['failed_events/jungfrau']
+common datasets: 45; byte-identical: 29; identical after sorting rows by timestamp: 9; float arrays not identical: 7; other differences: 0
+  same after timestamp sort: jungfrau/ROI_dark_com
+  same after timestamp sort: jungfrau/ROI_dark_max
+  same after timestamp sort: jungfrau/ROI_dark_mean
+  same after timestamp sort: jungfrau/ROI_dark_sum
+  same after timestamp sort: jungfrau/ROI_ring_com
+  same after timestamp sort: jungfrau/ROI_ring_max
+  same after timestamp sort: jungfrau/ROI_ring_mean
+  same after timestamp sort: jungfrau/ROI_ring_sum
+  same after timestamp sort: timestamp
+  float differs: Sums/jungfrau_calib                max|A-B|/max|A| = 6.91e-07
+  float differs: Sums/jungfrau_calib_max            max|A-B|/max|A| = 2.12e-02
+  float differs: Sums/jungfrau_calib_square         max|A-B|/max|A| = 6.18e-07
+  float differs: Sums/jungfrau_calib_thresADU1      max|A-B|/max|A| = 6.86e-07
+  float differs: Sums/jungfrau_calib_thresADU5      max|A-B|/max|A| = 6.86e-07
+  float differs: UserDataCfg/jungfrau/ROI_dark__ROI_dark_dat max|A-B|/max|A| = 1.00e+00
+  float differs: UserDataCfg/jungfrau/ROI_ring__ROI_ring_dat max|A-B|/max|A| = 1.00e+00
+
+=== master-sim-8r vs master-sim-8r-b
+master-sim-8r: # commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd | smd_producer: exit status 0 after 34 s (8 MPI ranks); producer.log 111 lines
+master-sim-8r-b: # commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd | smd_producer: exit status 0 after 28 s (8 MPI ranks); producer.log 109 lines
+A: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-sim-8r/h5/mfxsim0001_Run0001.h5
+B: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-sim-8r-b/h5/mfxsim0001_Run0001.h5
+datasets: A 45, B 45
+only in A: []
+only in B: []
+common datasets: 45; byte-identical: 29; identical after sorting rows by timestamp: 9; float arrays not identical: 7; other differences: 0
+  same after timestamp sort: jungfrau/ROI_dark_com
+  same after timestamp sort: jungfrau/ROI_dark_max
+  same after timestamp sort: jungfrau/ROI_dark_mean
+  same after timestamp sort: jungfrau/ROI_dark_sum
+  same after timestamp sort: jungfrau/ROI_ring_com
+  same after timestamp sort: jungfrau/ROI_ring_max
+  same after timestamp sort: jungfrau/ROI_ring_mean
+  same after timestamp sort: jungfrau/ROI_ring_sum
+  same after timestamp sort: timestamp
+  float differs: Sums/jungfrau_calib                max|A-B|/max|A| = 5.52e-07
+  float differs: Sums/jungfrau_calib_max            max|A-B|/max|A| = 1.72e-02
+  float differs: Sums/jungfrau_calib_square         max|A-B|/max|A| = 6.18e-07
+  float differs: Sums/jungfrau_calib_thresADU1      max|A-B|/max|A| = 5.49e-07
+  float differs: Sums/jungfrau_calib_thresADU5      max|A-B|/max|A| = 5.49e-07
+  float differs: UserDataCfg/jungfrau/ROI_dark__ROI_dark_dat max|A-B|/max|A| = 1.05e+00
+  float differs: UserDataCfg/jungfrau/ROI_ring__ROI_ring_dat max|A-B|/max|A| = 1.02e+00
+
+=== head-roi2d-8r vs head-roi2d-strict-8r
+head-roi2d-8r: # commit: smalldata_tools 202f4e8deb093ab550b47b6f8b92eb0a29ee55c5 | smd_producer: exit status 0 after 27 s (8 MPI ranks); producer.log 2301 lines
+head-roi2d-strict-8r: # commit: smalldata_tools 202f4e8deb093ab550b47b6f8b92eb0a29ee55c5 | smd_producer: exit status 1 after 27 s (8 MPI ranks); producer.log 2313 lines
+A: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-8r/h5/mfxsim0001_Run0001.h5
+B: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict-8r/h5/mfxsim0001_Run0001.h5
+datasets: A 32, B 32
+only in A: []
+only in B: []
+common datasets: 32; byte-identical: 31; identical after sorting rows by timestamp: 1; float arrays not identical: 0; other differences: 0
+  same after timestamp sort: timestamp

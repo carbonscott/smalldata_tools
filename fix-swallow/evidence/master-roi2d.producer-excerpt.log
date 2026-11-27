@@ -1,0 +1,88 @@
+# host: sdfrome055
+# date: 2026-11-27T04:17:48Z
+# commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd
+# cmd: excerpt.sh master-roi2d 70 12 (of: NP=4 run_swallow.sh /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd/data/tst/tstx00001 /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-roi2d x6roi2d /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-master )
+# excerpt of runs/master-roi2d/producer.log (4255 lines): lines 1-70 and 4244-4255
+[1795753073.954062] [sdfrome055:184213:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795753073.954327] [sdfrome055:184212:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795753073.954654] [sdfrome055:184211:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[1795753073.970520] [sdfrome055:184210:0]            sock.c:534  UCX  WARN  unable to read somaxconn value from /proc/sys/net/core/somaxconn file
+[ 2026-11-26 20:17:56,046 | INFO | smd_producer.py] MPI size: 4
+[ 2026-11-26 20:17:56,046 | INFO | smd_producer.py] psana conda environment is psana_20260904
+[ 2026-11-26 20:17:56,046 | INFO | smd_producer.py] /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-master
+[ 2026-11-26 20:18:01,414 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:18:01,415 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:18:01,416 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:18:01,417 | WARNING | common.py] Unable to import pyOpenCl. Please install it from: https://pypi.org/project/pyopencl
+[ 2026-11-26 20:18:05,070 | INFO | smd_producer.py] Producer cfg file: <prod_config_x6roi2d>.
+[ 2026-11-26 20:18:05,095 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-roi2d/xtc
+[ 2026-11-26 20:18:05,097 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-roi2d/xtc
+[ 2026-11-26 20:18:05,105 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-roi2d/xtc
+[ 2026-11-26 20:18:05,107 | INFO | smd_producer.py] Requested data be found at: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-roi2d/xtc
+[ 2026-11-26 20:18:05,107 | INFO | smd_producer.py] Will write small data file to /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-roi2d/h5/mfxsim0001_Run0001.h5
+[PSANA-INFO RANK:0 1795753085.413943552] Communicators [MPI-role] layout: smd0=1 eb=1 bd=1 srv=1 (world=4)
+[PSANA-INFO RANK:0 1795753085.438825728] MPIDataSource Warning: unable to connect to http://127.0.0.1:31877/lgbk/mfxsim0001/ws/1/current_files_for_live_mode
+#### DATASOURCE AND PSANA ENV VAR INFO ####
+Instantiated data source with arguments: {'exp': 'mfxsim0001', 'run': 1, 'dir': '/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-roi2d/xtc'}
+MPI size: 4
+PS_EB_NODES=1
+PS_SRV_NODES=1
+PS_SMD_N_EVENTS=1000
+DS batchsize: 1
+#### END DATASOURCE AND PSANA ENV VAR INFO ####
+
+[ 2026-11-26 20:18:05,457 | INFO | smd_producer.py] Unique user rank: 2
+[PSANA-INFO RANK:0 1795753086.073080064] RunParallel [MPI-role] rank=0 host=sdfrome055 numa_id=4 numa_size=2
+[ 2026-11-26 20:18:06,073 | INFO | smd_producer.py] Opening the h5file /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-roi2d/h5/mfxsim0001_Run0001.h5, gathering at 100
+could not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+could not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+[ 2026-11-26 20:18:06,073 | INFO | DetObject.py] Getting the detector for: jungfrau
+[ 2026-11-26 20:18:06,073 | INFO | DetObject.py] Getting the detector for: jungfrau
+[ 2026-11-26 20:18:06,076 | INFO | smd_producer.py] smalldata file has been successfully created.
+could not find LCLS2 EPICS PV lxt in data
+could not find LCLS2 EPICS PV txt in data
+[ 2026-11-26 20:18:06,077 | INFO | smd_producer.py] Default detectors loaded:
+[ 2026-11-26 20:18:06,077 | INFO | smd_producer.py] damage: damage
+[ 2026-11-26 20:18:06,392 | INFO | smd_producer.py] Detectors: ['jungfrau']
+[ 2026-11-26 20:18:06,392 | INFO | smd_producer.py] Integrating detectors: []
+[ 2026-11-26 20:18:06,392 | INFO | smd_producer.py] And now the event loop user....
+[ 2026-11-26 20:18:06,572 | WARNING | UtilsJungfrau.py] calib_jungfrau_versions:
+    calib jungfrau with cversion=3 is intended to run fast C++ version and currently DOES NOT APPLY COMMON-MODE CORRECTION
+    to enable common mode correction, initialize calib(...) with cversion=0 and the desired cmpars, currently: (7, 0, 10)
+/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-master/smalldata_tools/ana_funcs/roi_rebin.py:193: RuntimeWarning: Mean of empty slice
+  ret_dict["mean"] = ROIdata.filled(fill_value=0).mean()
+/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/psana_20260904/lib/python3.13/site-packages/numpy/_core/_methods.py:142: RuntimeWarning: invalid value encountered in divide
+  ret = ret.dtype.type(ret / rcount)
+[ 2026-11-26 20:18:06,599 | WARNING | smd_producer.py] Failed analyzing det <smalldata_tools.lcls2.DetObject.JungfrauObject object at 0x7f4912b39e80> on evt 0
+zero-size array to reduction operation maximum which has no identity
+Processed evt 0
+[ 2026-11-26 20:18:06,601 | WARNING | smd_producer.py] Failed analyzing det <smalldata_tools.lcls2.DetObject.JungfrauObject object at 0x7f4912b39e80> on evt 1
+zero-size array to reduction operation maximum which has no identity
+Processed evt 1
+[ 2026-11-26 20:18:06,603 | WARNING | smd_producer.py] Failed analyzing det <smalldata_tools.lcls2.DetObject.JungfrauObject object at 0x7f4912b39e80> on evt 2
+zero-size array to reduction operation maximum which has no identity
+Processed evt 2
+[ 2026-11-26 20:18:06,605 | WARNING | smd_producer.py] Failed analyzing det <smalldata_tools.lcls2.DetObject.JungfrauObject object at 0x7f4912b39e80> on evt 3
+zero-size array to reduction operation maximum which has no identity
+Processed evt 3
+[ 2026-11-26 20:18:06,607 | WARNING | smd_producer.py] Failed analyzing det <smalldata_tools.lcls2.DetObject.JungfrauObject object at 0x7f4912b39e80> on evt 4
+zero-size array to reduction operation maximum which has no identity
+Processed evt 4
+[ 2026-11-26 20:18:06,609 | WARNING | smd_producer.py] Failed analyzing det <smalldata_tools.lcls2.DetObject.JungfrauObject object at 0x7f4912b39e80> on evt 5
+zero-size array to reduction operation maximum which has no identity
+Processed evt 5
+[... lines 71-4243 not shown ...]
+Problem with data sum for jungfrau and key calib_square
+Problem with data sum for jungfrau and key calib_thresADU1
+Problem with data sum for jungfrau and key calib_thresADU5
+Problem with data sum for jungfrau and key calib_max
+[ 2026-11-26 20:18:10,615 | INFO | smd_producer.py] Saving detector configuration to UserDataCfg
+Joining: 1 files --> mfxsim0001_Run0001.h5
+[ 2026-11-26 20:18:10,726 | INFO | smd_producer.py] Getting epics data from Archiver (rank: 2)
+/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-master/lcls2_producers/smd_producer.py:1081: DeprecationWarning: There is no current event loop
+  loop = asyncio.get_event_loop()
+########## JOB TIME: 0.247793 minutes ###########
+Last Event: 2079
+[1795753092.063015] [sdfrome055:184210:0]       tag_match.c:62   UCX  WARN  unexpected tag-receive descriptor 0x55fc99d29d40 was not matched

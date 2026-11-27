@@ -1,0 +1,33 @@
+# host: sdfrome055
+# date: 2026-11-27T04:18:47Z
+# commit: smalldata_tools 202f4e8deb093ab550b47b6f8b92eb0a29ee55c5
+# cmd: NP=4 run_swallow.sh /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd/data/tst/tstx00001 /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/head-roi2d-strict x6roi2d /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-fix --strict
+# smalldata_tools tracked changes vs HEAD: 
+# branch: HEAD -> fix/307-swallow-exceptions, origin/fix/307-swallow-exceptions | smd_producer: name the detector and count failures of its analysis
+# recording: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd/data/tst/tstx00001
+# psana env: psconda.sh -> /sdf/group/lcls/ds/ana/sw/conda2/rel/ana/lcls2_111826/setup_env_ana.sh
+# network: lo (namespace net:[4026534370])
+# config prod_config_x6roi2d.py ROIs: RING_ROI = [[246, 266], [682, 702]] DARK_ROI = [[400, 420], [0, 20]] 
+xtc2 files: mfxsim0001-r0001-s000-c000.xtc2  smalldata: mfxsim0001-r0001-s000-c000.smd.xtc2 
+calibws_jf: ready on 127.0.0.1:31877: jungfrau_000001 pedestal 1031.5 gain 40.0 fault None
+$ timeout 600 mpirun -n 4 python -m mpi4py.run lcls2_producers/smd_producer.py --experiment mfxsim0001 --run 1 --psdm_dir <OUT>/xtc --directory <OUT>/h5 --noarch --all_events --config x6roi2d --strict
+hang guard: timeout 600 s around mpirun (not triggered)
+smd_producer: exit status 1 after 28 s (4 MPI ranks); producer.log 2201 lines
+lines 'Failed analyzing det': 2080
+tracebacks in producer.log: 1
+first failure lines (ERROR + traceback frames):
+53:[ 2026-11-26 20:19:06,528 | ERROR | smd_producer.py] Failed analyzing det jungfrau on evt 0
+55-  File "/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-fix/lcls2_producers/smd_producer.py", line 838, in <module>
+58-  File "/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-fix/smalldata_tools/lcls2/DetObject.py", line 180, in processFuncs
+60-  File "/sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-fix/smalldata_tools/ana_funcs/roi_rebin.py", line 194, in process
+63-  File "/sdf/group/lcls/ds/ana/sw/conda2/inst/envs/psana_20260904/lib/python3.13/site-packages/numpy/_core/_methods.py", line 41, in _amax
+65-ValueError: zero-size array to reduction operation maximum which has no identity
+end-of-job summary lines:
+[ 2026-11-26 20:19:13,684 | ERROR | smd_producer.py] Detector jungfrau: analysis failed on 2080 events on rank 2; its user data are missing from the h5 for those events
+JOB TIME line: 1; MPI abort lines: 2
+h5 (read back with h5py): mfxsim0001_Run0001.h5, 2080 rows (timestamp)
+h5 top-level keys: ['UserDataCfg', 'damage', 'epics_archiver', 'failed_events', 'timestamp']
+h5 jungfrau     : ABSENT
+h5 Sums         : ABSENT
+h5 failed_events: ['jungfrau']
+h5 failed_events/jungfrau = [2080] (dtype int64, shape (1,))

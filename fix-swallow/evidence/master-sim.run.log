@@ -1,0 +1,25 @@
+# host: sdfrome055
+# date: 2026-11-27T04:19:19Z
+# commit: smalldata_tools 113800e157605e27b1a9794e1f6467a58a5b11cd
+# cmd: NP=4 run_swallow.sh /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd/data/tst/tstx00001 /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/swallow/runs/master-sim x6sim /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/agents/h2/sdt-master 
+# smalldata_tools tracked changes vs HEAD: 
+# branch: HEAD -> master, origin/master, origin/HEAD | Merge pull request #302 from slac-lcls/mnt/py-313
+# recording: /sdf/data/lcls/ds/prj/prjcwang31/scratch/main/smd-prs/shared/rec/jf-rec1/wd/data/tst/tstx00001
+# psana env: psconda.sh -> /sdf/group/lcls/ds/ana/sw/conda2/rel/ana/lcls2_111826/setup_env_ana.sh
+# network: lo (namespace net:[4026534371])
+# config prod_config_x6sim.py ROIs: RING_ROI = [[0, 1], [246, 266], [682, 702]] DARK_ROI = [[0, 1], [400, 420], [0, 20]] 
+xtc2 files: mfxsim0001-r0001-s000-c000.xtc2  smalldata: mfxsim0001-r0001-s000-c000.smd.xtc2 
+calibws_jf: ready on 127.0.0.1:31877: jungfrau_000001 pedestal 1031.5 gain 40.0 fault None
+$ timeout 600 mpirun -n 4 python -m mpi4py.run lcls2_producers/smd_producer.py --experiment mfxsim0001 --run 1 --psdm_dir <OUT>/xtc --directory <OUT>/h5 --noarch --all_events --config x6sim 
+hang guard: timeout 600 s around mpirun (not triggered)
+smd_producer: exit status 0 after 40 s (4 MPI ranks); producer.log 86 lines
+lines 'Failed analyzing det': 0
+tracebacks in producer.log: 0
+first failure lines (ERROR + traceback frames):
+end-of-job summary lines:
+JOB TIME line: 1; MPI abort lines: 0
+h5 (read back with h5py): mfxsim0001_Run0001.h5, 2080 rows (timestamp)
+h5 top-level keys: ['Sums', 'UserDataCfg', 'damage', 'epics_archiver', 'jungfrau', 'timestamp']
+h5 jungfrau     : ['ROI_dark_com', 'ROI_dark_max', 'ROI_dark_mean', 'ROI_dark_sum', 'ROI_ring_com', 'ROI_ring_max', 'ROI_ring_mean', 'ROI_ring_sum']
+h5 Sums         : ['jungfrau_calib', 'jungfrau_calib_max', 'jungfrau_calib_square', 'jungfrau_calib_thresADU1', 'jungfrau_calib_thresADU5']
+h5 failed_events: ABSENT
